@@ -1,8 +1,25 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>Hello Coursera</title>
-</head>
-<body>
-<h1>Hello Coursera Students! My name is Atish</h1>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<script src="angular.min.js"></script>
+		<script src="app.js"></script>
+		<title>My First AngularJS App</title>
+		<style>
+			img{height: 100px; width: 100px;}
+		</style>
+	</head>
+	<body ng-app="nameCalculator">
+		<h1>Name Calculator</h1>
+		<div ng-controller="nameCalculatorController">
+			<div>Your Name: </div>
+			<input type="text" ng-model="name" ng-keyup="calcValue();" ng-blur="upper();">
+			<div>Total numeric value of "{{name}}" is: {{finalValue}}</div>
+			<div>
+				<img ng-src="http://127.0.0.1:8887/mov{{number}}.jpg">
+				<br>
+				<button ng-click="changeImage()">Change image</button>
+			</div>
+		</div>
+	</body>
 </html>
