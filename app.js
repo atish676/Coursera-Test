@@ -26,9 +26,9 @@
 				$scope.name = upCase($scope.name);
 			};
 			
-			$scope.number = "ie2";
+			$scope.number = "ua2";
 			$scope.changeImage = function(){
-				$scope.number = "ie1";
+				$scope.number = "ua3";
 			};
 		}
 })();
