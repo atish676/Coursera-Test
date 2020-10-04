@@ -6,7 +6,7 @@
 		<script src="app.js"></script>
 		<title>My First AngularJS App</title>
 		<style>
-			img{height: 100px; width: 100px;}
+			img{height: 400px; width: 600px;}
 		</style>
 	</head>
 	<body ng-app="nameCalculator">
@@ -14,11 +14,24 @@
 		<div ng-controller="nameCalculatorController">
 			<div>Your Name: </div>
 			<input type="text" ng-model="name" ng-keyup="calcValue();" ng-blur="upper();">
-			<div>Total numeric value of "{{name}}" is: {{finalValue}}</div>
 			<div>
-				<img ng-src="http://127.0.0.1:8887/kill{{number}}.jpg">
+				Total numeric value of "{{name}}" is: {{finalValue}}
+				<br><br>
+				Original: {{msg()}}
+				<br>
+				New: {{likesmsg()}}
+				<br>
+				Truth: {{likesmsg() | truth : 'Rajma Chawal' : 'anime'}}
+				<br>
+				BigTruth: {{likesmsg() | truth : 'Rajma Chawal' : 'anime' | uppercase}}
+				<br>
+				Cost: {{plate | currency : "Rs." : 4}}
+			</div>
+			<div>
 				<br>
 				<button ng-click="changeImage()">Change image</button>
+				<br>
+				<img ng-src="images/kill{{number}}.jpg">
 			</div>
 		</div>
 	</body>
