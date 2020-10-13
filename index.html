@@ -10,28 +10,91 @@
 		</style>
 	</head>
 	<body ng-app="nameCalculator">
-		<h1>Name Calculator</h1>
 		<div ng-controller="nameCalculatorController">
-			<div>Your Name: </div>
-			<input type="text" ng-model="name" ng-keyup="calcValue();" ng-blur="upper();">
 			<div>
-				Total numeric value of "{{name}}" is: {{finalValue}}
-				<br><br>
+				<h1>Name Value Calculator</h1>
+				
+				Your Name:
+				
+				<br>
+				
+				<input type="text" ng-model="name" ng-keyup="calcValue();" ng-blur="upper();">
+				
+				<br>
+				
+				Total numeric value of "{{::name}}" is: {{finalValue}}
+			</div>
+			<div>
+				<h1>Filters Application</h1>
+				
 				Original: {{msg()}}
+				
 				<br>
+				
 				New: {{likesmsg()}}
+				
 				<br>
+				
 				Truth: {{likesmsg() | truth : 'Rajma Chawal' : 'anime'}}
+				
 				<br>
+				
 				BigTruth: {{likesmsg() | truth : 'Rajma Chawal' : 'anime' | uppercase}}
+				
 				<br>
+				
 				Cost: {{plate | currency : "Rs." : 4}}
 			</div>
 			<div>
-				<br>
+				<h1>Scope usage</h1>
+				
 				<button ng-click="changeImage()">Change image</button>
+				
 				<br>
+				
 				<img ng-src="images/kill{{number}}.jpg">
+			</div>
+			<div>
+				<h1>Digest Cycle</h1>
+				
+				<button ng-click="watcherCounter()">Log # of watchers</button>
+				
+				<input type="text" ng-model="name2">
+				
+				<div>
+					<button ng-click="countOnce()">Up once counter</button>
+					<button ng-click="upCounter()">Increment counter</button>
+				</div>
+				
+				<div>
+					Once counter: {{onceCounter}}<br>
+					Regular counter: {{counter}}
+				</div>
+			</div>
+			<div>
+				<h1>Shopping List</h1>
+				
+				<input type="text" ng-model="search">
+				
+				<ul>
+					<li ng-repeat="item in shoppingList1 | filter : search">{{item}}</li>
+				</ul>
+				
+				<input type="text" ng-model="shoppingList2[0].quantity">
+				
+				<ul>
+					<li ng-repeat="item in shoppingList2">Buy {{item.quantity}} of {{item.name}}</li>
+				</ul>
+				
+				<input type="text" ng-model="newItemName" placeholder="item name">
+				
+				<input type="text" ng-model="newItemQuantity" placeholder="item quantity">
+				
+				<button ng-click="addToList()">Add to List</button>
+				
+				<ul>
+					<li ng-repeat="item in shoppingList2">{{$index+1}}. Buy {{item.quantity}} of {{item.name}}</li>
+				</ul>
 			</div>
 		</div>
 	</body>
