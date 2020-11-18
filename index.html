@@ -97,5 +97,80 @@
 				</ul>
 			</div>
 		</div>
+		<h1>Controller As</h1>
+		<div ng-controller="ParentController1">
+			<div ng-controller="ChildController1">
+			</div>
+		</div>
+		
+		<div ng-controller="ParentController2 as parent">
+			Parent Value = {{parent.value}}
+			<div ng-controller="ChildController2 as child">
+				Child value = {{child.value}}
+				Parent value = {{parent.value}}
+			</div>
+		</div>
+		
+		<h1>Custom Services Shopping List</h1>
+		<div ng-controller="ShoppingListAddController as itemAdder">
+			<input type="text" ng-model="itemAdder.itemName" placeholder="item name">
+			<input type="text" ng-model="itemAdder.itemQuantity" placeholder="item quantity">
+			<button ng-click="itemAdder.addItem();">Add item</button>
+		</div>
+		
+		<div ng-controller="ShoppingListShowController as showList">
+			<ol>
+				<li ng-repeat="item in showList.items">
+					{{item.quantity}} of {{item.name}}
+					<button ng-click="showList.removeItem($index)">Remove item</button>
+				</li>
+			</ol>
+		</div>
+		
+		<h1>Factory function Shopping Lists</h1>
+		<div id="list1" ng-controller="ShoppingListController1 as list1">
+			<h3>Shopping List #1</h3>
+			<input type="text" ng-model="list1.itemName" placeholder="item name">
+			<input type="text" ng-model="list1.itemQuantity" placeholder="item quantity">
+			<button ng-click="list1.addItem();">Add item</button>
+			<ol>
+				<li ng-repeat="item in list1.items">
+					{{item.quantity}} of {{item.name}}
+					<button ng-click="list1.removeItem($index);">Remove item</button>
+				</li>
+			</ol>
+			<div class="error">Error: {{list1.errorMessage}}</div>
+		</div>
+		
+		<div id="list2" ng-controller="ShoppingListController2 as list2">
+			<h3>Shopping List #2 (Only 3 items)</h3>
+			<input type="text" ng-model="list2.itemName" placeholder="item name">
+			<input type="text" ng-model="list2.itemQuantity" placeholder="item quantity">
+			<button ng-click="list2.addItem();">Add item</button>
+			<ol>
+				<li ng-repeat="item in list2.items">
+					{{item.quantity}} of {{item.name}}
+					<button ng-click="list2.removeItem($index);">Remove item</button>
+				</li>
+			</ol>
+			<div class="error">Error: {{list2.errorMessage}}</div>
+		</div>
+		
+		<h1>Provider Function Shopping List</h1>
+		<div id="list" ng-controller="ShoppingListProviderController as list">
+			<h3>Shopping List</h3>
+			<input type="text" ng-model="list.itemName" placeholder="item name">
+			<input type="text" ng-model="list.itemQuantity" placeholder="item quantity">
+			<button ng-click="list.addItem();">Add item</button>
+			<ol>
+				<li ng-repeat="item in list.items">
+					{{item.quantity}} of {{item.name}}
+					<button ng-click="list.removeItem($index);">Remove item</button>
+				</li>
+			</ol>
+			<div ng-if="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
+			<div ng-show="list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
+			<div ng-hide="!list.errorMessage" class="error">Error: {{list.errorMessage}}</div>
+		</div>
 	</body>
 </html>
